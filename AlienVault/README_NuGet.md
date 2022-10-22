@@ -1,6 +1,6 @@
 ﻿# AlienVault 👽
 
-![](https://raw.githubusercontent.com/actually-akac/AlienVault/master/AlienVault/banner.png)
+![](https://raw.githubusercontent.com/actually-akac/AlienVault/master/banner.png)
 
 👾 An async C# library for interacting with the AlienVault OTX DirectConnect APIs.
 

@@ -1,7 +1,7 @@
 ﻿# AlienVault 👽
 
 <div align="center">
-  <img width="495" height="171" src="https://raw.githubusercontent.com/actually-akac/AlienVault/master/AlienVault/banner.png">
+  <img width="495" height="171" src="https://raw.githubusercontent.com/actually-akac/AlienVault/master/banner.png">
 </div>
 
 <div align="center">
