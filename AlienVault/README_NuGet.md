@@ -107,7 +107,7 @@ WhoisEntry[] whoisEntries = await client.Data.GetWhois("t4ck0wsvvpbmktxzluyee11u
 
 ## Available Methods
 
-You can find all available methods at [/DOCS.cs](https://github.com/actually-akac/AlienVault/blob/master/DOCS.md)
+You can find all available methods at [/DOCS.md](https://github.com/actually-akac/AlienVault/blob/master/DOCS.md)
 
 ## Resources
 Website: https://otx.alienvault.com
