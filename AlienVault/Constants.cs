@@ -5,6 +5,8 @@ namespace AlienVault
 {
     internal static class Constants
     {
+        public const string UserAgent = "OTX AlienVault C# Client - actually-akac/AlienVault";
+
         public static readonly JsonSerializerOptions EnumOptions = new()
         {
             Converters =

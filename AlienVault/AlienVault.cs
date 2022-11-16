@@ -36,13 +36,11 @@ namespace AlienVault
         /// </summary>
         public static readonly Version HttpVersion = new(2, 0);
 
-        private readonly HttpClientHandler HttpHandler = new()
+        private readonly HttpClient Client = new(new HttpClientHandler()
         {
             AutomaticDecompression = DecompressionMethods.All,
             AllowAutoRedirect = false
-        };
-
-        private readonly HttpClient Client;
+        }) { DefaultRequestVersion = HttpVersion, BaseAddress = BaseUri, Timeout = Timeout };
 
         private readonly AlienVaultClientConfig Config;
 
@@ -58,15 +56,8 @@ namespace AlienVault
 
             Config = config;
 
-            Client = new(HttpHandler)
-            {
-                DefaultRequestVersion = HttpVersion,
-                BaseAddress = BaseUri,
-                Timeout = Timeout
-            };
-
             Client.DefaultRequestHeaders.AcceptEncoding.ParseAdd("gzip, deflate, br");
-            Client.DefaultRequestHeaders.UserAgent.ParseAdd("OTX AlienVault C# Client - actually-akac/AlienVault");
+            Client.DefaultRequestHeaders.UserAgent.ParseAdd(Constants.UserAgent);
             Client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
             Client.DefaultRequestHeaders.Accept.ParseAdd("text/html");
             Client.DefaultRequestHeaders.Accept.ParseAdd("*/*");
