@@ -3,6 +3,7 @@ using AlienVault.Modules;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 
 namespace AlienVault
 {
@@ -12,35 +13,22 @@ namespace AlienVault
     public class AlienVaultClient
     {
         /// <summary>
-        /// The version of the API to use.
-        /// </summary>
-        public const int Version = 1;
-
-        /// <summary>
-        /// The base URL to use when communicating.
-        /// </summary>
-        public static readonly string BaseUrl = $"https://otx.alienvault.com/api/v{Version}/";
-
-        /// <summary>
         /// The base URI to use when communicating.
         /// </summary>
-        public static readonly Uri BaseUri = new(BaseUrl);
+        public static readonly Uri BaseUri = new($"https://otx.alienvault.com/api/v{Constants.Version}/");
 
-        /// <summary>
-        /// The maximum duration to wait for a response from the server.
-        /// </summary>
-        public static readonly TimeSpan Timeout = TimeSpan.FromMinutes(5);
-
-        /// <summary>
-        /// The HTTP request version to use when communicating.
-        /// </summary>
-        public static readonly Version HttpVersion = new(2, 0);
-
-        private readonly HttpClient Client = new(new HttpClientHandler()
+        private static readonly HttpClientHandler HttpHandler = new()
         {
             AutomaticDecompression = DecompressionMethods.All,
             AllowAutoRedirect = false
-        }) { DefaultRequestVersion = HttpVersion, BaseAddress = BaseUri, Timeout = Timeout };
+        };
+
+        private readonly HttpClient Client = new(HttpHandler)
+        {
+            BaseAddress = BaseUri,
+            DefaultRequestVersion = new(2, 0),
+            Timeout = TimeSpan.FromMinutes(5)
+        };
 
         private readonly AlienVaultClientConfig Config;
 

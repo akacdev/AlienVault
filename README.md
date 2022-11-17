@@ -9,19 +9,32 @@
 </div>
 
 ## Usage
-Available on NuGet as `AlienVault`, methods can be found under the class `AlienVaultClient`.<br>
-Get your API key at: https://otx.alienvault.com/settings
+Provides an easy interface for interacting with all AlienVault OTX DirectConnect APIs.
 
-https://www.nuget.org/packages/AlienVault
+To get started, add the library into your solution with either the `NuGet Package Manager` or the `dotnet` CLI.
+```rust
+dotnet add package AlienVault
+```
+
+For the primary classes to become available, import one or more of the used namespaces.
+```csharp
+using AlienVault;
+using AlienVault.Entities;
+using AlienVault.Modules;
+```
+
+An API key is required to interact with the API. Create your own key at: https://otx.alienvault.com/settings
+
+Need more examples? Under the `Example` directory you can find a working demo project that implements this library.
 
 ## Features
-- Manage pulses, process events and submit your IOCs
-- Made with **.NET 6**
+- Built for **.NET 6** and **.NET 7**
 - Fully **async**
 - Deep coverage of the API
-- Extensive **documentation**
+- Extensive **XML documentation**
 - **No external dependencies** (uses integrated HTTP and JSON)
 - **Custom exceptions** (`AlienVaultException`) for advanced catching
+- Manage pulses, process events and submit your IOCs
 - Automatic request retries
 - Example project to demonstrate all capabilities of the library
 
@@ -110,9 +123,9 @@ WhoisEntry[] whoisEntries = await client.Data.GetWhois("t4ck0wsvvpbmktxzluyee11u
 
 ## Available Methods
 
-You can find all available methods at [/DOCS.md](https://github.com/actually-akac/AlienVault/blob/master/DOCS.md)
+You can find all available methods at [DOCS.md](https://github.com/actually-akac/AlienVault/blob/master/DOCS.md).
 
 ## Resources
-Website: https://otx.alienvault.com<br>
+- Website: https://otx.alienvault.com
 
 *This is a community-ran library. Not affiliated with AT&T Cybersecurity.*

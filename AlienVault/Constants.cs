@@ -5,6 +5,13 @@ namespace AlienVault
 {
     internal static class Constants
     {
+        /// <summary>
+        /// The version of the API to use.
+        /// </summary>
+        public const int Version = 1;
+        /// <summary>
+        /// The value of the <c>User-Agent</c> header to send.
+        /// </summary>
         public const string UserAgent = "OTX AlienVault C# Client - actually-akac/AlienVault";
 
         public static readonly JsonSerializerOptions EnumOptions = new()

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Linq;
-using AlienVault;
-using AlienVault.Entities;
 using System.IO;
 using System.Text;
+using AlienVault;
+using AlienVault.Entities;
+using AlienVault.Modules;
 
 namespace Example
 {
