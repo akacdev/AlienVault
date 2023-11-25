@@ -8,10 +8,7 @@
         /// <summary>
         /// Create a new instance of the configuration class.
         /// </summary>
-        public AlienVaultClientConfig()
-        {
-
-        }
+        public AlienVaultClientConfig() { }
 
         /// <summary>
         /// Your AlienVault API key. Get one at <a href="https://otx.alienvault.com/settings">https://otx.alienvault.com/settings</a>.

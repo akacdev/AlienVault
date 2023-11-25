@@ -8,12 +8,10 @@ namespace AlienVault.Modules
     public class UserModule
     {
         private readonly HttpClient Client;
-        private readonly AlienVaultClientConfig Config;
 
-        public UserModule(HttpClient client, AlienVaultClientConfig config)
+        public UserModule(HttpClient client)
         {
             Client = client;
-            Config = config;
         }
 
         /// <summary>

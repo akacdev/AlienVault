@@ -8,12 +8,10 @@ namespace AlienVault.Modules
     public class IndicatorModule
     {
         private readonly HttpClient Client;
-        private readonly AlienVaultClientConfig Config;
 
-        public IndicatorModule(HttpClient client, AlienVaultClientConfig config)
+        public IndicatorModule(HttpClient client)
         {
             Client = client;
-            Config = config;
         }
 
         /// <summary>

@@ -3,7 +3,6 @@ using AlienVault.Modules;
 using System;
 using System.Net;
 using System.Net.Http;
-using System.Threading;
 
 namespace AlienVault
 {
@@ -12,11 +11,6 @@ namespace AlienVault
     /// </summary>
     public class AlienVaultClient
     {
-        /// <summary>
-        /// The base URI to use when communicating.
-        /// </summary>
-        public static readonly Uri BaseUri = new($"https://otx.alienvault.com/api/v{Constants.Version}/");
-
         private static readonly HttpClientHandler HttpHandler = new()
         {
             AutomaticDecompression = DecompressionMethods.All,
@@ -25,9 +19,9 @@ namespace AlienVault
 
         private readonly HttpClient Client = new(HttpHandler)
         {
-            BaseAddress = BaseUri,
-            DefaultRequestVersion = new(2, 0),
-            Timeout = TimeSpan.FromMinutes(5)
+            BaseAddress = Constants.BaseUri,
+            DefaultRequestVersion = Constants.HttpVersion,
+            Timeout = Constants.Timeout
         };
 
         private readonly AlienVaultClientConfig Config;
@@ -40,7 +34,7 @@ namespace AlienVault
         public AlienVaultClient(AlienVaultClientConfig config)
         {
             if (config is null) throw new ArgumentNullException(nameof(config), "Provided AlienVault Client config is null.");
-            if (string.IsNullOrEmpty(config.Key)) throw new ArgumentNullException(nameof(config.Key), "API key is null or empty.");
+            if (string.IsNullOrEmpty(config.Key)) throw new ArgumentNullException(nameof(config), "API key is null or empty.");
 
             Config = config;
 
@@ -51,10 +45,10 @@ namespace AlienVault
             Client.DefaultRequestHeaders.Accept.ParseAdd("*/*");
             Client.DefaultRequestHeaders.Add("X-OTX-API-Key", config.Key);
 
-            Users = new(Client, Config);
+            Users = new(Client);
             Search = new(Client, Config);
             Pulses = new(Client, Config);
-            Indicators = new(Client, Config);
+            Indicators = new(Client);
             Data = new(Client, Config);
             Analysis = new(Client, Config);
         }

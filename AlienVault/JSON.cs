@@ -82,7 +82,6 @@ namespace AlienVault
                 _ => throw new JsonException(),
             };
         }
-            
     }
 
     public class DoubleIntConverter : JsonConverter<int>
@@ -100,7 +99,6 @@ namespace AlienVault
                 _ => throw new JsonException(),
             };
         }
-
     }
 
     public class DoubleLongConverter : JsonConverter<long>
@@ -118,6 +116,5 @@ namespace AlienVault
                 _ => throw new JsonException(),
             };
         }
-
     }
 }

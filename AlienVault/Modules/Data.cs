@@ -24,21 +24,12 @@ namespace AlienVault.Modules
             bool success = IPAddress.TryParse(ip, out IPAddress addr);
             if (!success) throw new ArgumentException($"Provided IP address ({ip}) is invalid.", nameof(ip));
 
-            int version;
-
-            #pragma warning disable IDE0066
-            switch (addr.AddressFamily)
+            int version = addr.AddressFamily switch
             {
-                case System.Net.Sockets.AddressFamily.InterNetwork:
-                    version = 4;
-                    break;
-                case System.Net.Sockets.AddressFamily.InterNetworkV6:
-                    version = 6;
-                    break;
-                default:
-                    throw new ArgumentException($"Provided IP address ({ip}) has to be either IPv4 or IPv6.", nameof(ip));
-            }
-            #pragma warning restore IDE0066
+                System.Net.Sockets.AddressFamily.InterNetwork => 4,
+                System.Net.Sockets.AddressFamily.InterNetworkV6 => 6,
+                _ => throw new ArgumentException($"Provided IP address ({ip}) has to be either IPv4 or IPv6.", nameof(ip)),
+            };
 
             return version;
         }
